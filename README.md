@@ -3,8 +3,6 @@
 personal portfolio website showcasing my work as a frontend developer.  
 built with html, css and javascript — nothing else.
 
-🌐 [yoursite.dev](https://yoursite.dev)
-
 ---
 
 ## stack
