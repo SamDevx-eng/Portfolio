@@ -2,6 +2,104 @@
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 
 /* =============================================
+   VARIABLES — LIGHT (por defecto)
+   ============================================= */
+:root {
+    --bg:              #fafafa;
+    --bg-subtle:       #ebebeb;
+    --bg-card:         #ffffff;
+    --bg-dark-section: #242424;
+
+    --text:            #111111;
+    --text-muted:      #555555;
+    --text-inverse:    #ffffff;
+
+    --border:          #d0cfcf;
+    --border-subtle:   rgb(199, 199, 199);
+
+    --accent:          #06b6d4;
+    --accent-nav:      #0300b9;
+
+    --btn-primary-bg:  #000000;
+    --btn-primary-fg:  #ffffff;
+    --btn-primary-hover-bg:     #ffffff;
+    --btn-primary-hover-fg:     #000000;
+    --btn-primary-hover-border: #000000;
+
+    --btn-ghost-bg:    #ffffff;
+    --btn-ghost-fg:    #000000;
+    --btn-ghost-border: rgb(229, 229, 229);
+    --btn-ghost-hover-bg:  #000000;
+    --btn-ghost-hover-fg:  #ffffff;
+
+    --social-bg:       #000000;
+    --social-fg:       #ffffff;
+    --social-hover-bg: #ffffff;
+    --social-hover-fg: #000000;
+    --social-hover-border: #000000;
+
+    --card-shadow:     rgba(100, 100, 111, 0.18) 0px 7px 29px 0px;
+    --card-border:     transparent;
+    --card-hover-border: #6f73e4;
+
+    --tag-bg:          #ffffff;
+    --tag-border:      #d0cfcf;
+
+    --toggle-bg:       transparent;
+    --toggle-fg:       rgb(119, 0, 255);
+    --toggle-border:   rgb(119, 0, 255);
+}
+
+/* =============================================
+   VARIABLES — DARK
+   ============================================= */
+body.dark-mode {
+    --bg:              #0f0f0f;
+    --bg-subtle:       #161622;
+    --bg-card:         #1e1e2e;
+    --bg-dark-section: #1a1a1a;
+
+    --text:            #f0eeff;
+    --text-muted:      #8888aa;
+    --text-inverse:    #f0eeff;
+
+    --border:          #2a2a3e;
+    --border-subtle:   #2a2a3e;
+
+    --accent:          #22d3ee;
+    --accent-nav:      #818cf8;
+
+    --btn-primary-bg:           #f0eeff;
+    --btn-primary-fg:           #0f0f0f;
+    --btn-primary-hover-bg:     #0f0f0f;
+    --btn-primary-hover-fg:     #f0eeff;
+    --btn-primary-hover-border: #f0eeff;
+
+    --btn-ghost-bg:          #1e1e2e;
+    --btn-ghost-fg:          #f0eeff;
+    --btn-ghost-border:      #3a3a55;
+    --btn-ghost-hover-bg:    #f0eeff;
+    --btn-ghost-hover-fg:    #0f0f0f;
+
+    --social-bg:             #2a2a3e;
+    --social-fg:             #f0eeff;
+    --social-hover-bg:       #f0eeff;
+    --social-hover-fg:       #0f0f0f;
+    --social-hover-border:   #f0eeff;
+
+    --card-shadow:           rgba(0, 0, 0, 0.5) 0px 7px 29px 0px;
+    --card-border:           #2a2a3e;
+    --card-hover-border:     #9b9ff0;
+
+    --tag-bg:                #252538;
+    --tag-border:            #3a3a55;
+
+    --toggle-bg:             transparent;
+    --toggle-fg:             #a78bfa;
+    --toggle-border:         #a78bfa;
+}
+
+/* =============================================
    BASE
    ============================================= */
 * {
@@ -12,34 +110,66 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: var(--bg-light);
+    background-color: var(--bg);
+    color: var(--text);
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 p {
     line-height: 30px;
 }
 
-:root {
-    --bg-light:   #fafafa;
-    --text-light: #111;
-    --bg-dark:    #111;
-    --text-dark:  #fafafa;
-    --accent:     #06b6d4;
+html {
+    scroll-behavior: smooth;
 }
 
 /* =============================================
    NAV
    ============================================= */
+.header_buttons {
+    display: flex;
+    gap: 15px;
+}
+
+#theme-toggle {
+    display:          flex;
+    justify-content:  center;
+    padding:          0.3rem 0.5rem;
+    font-size:        20px;
+    background-color: var(--toggle-bg);
+    border:           2px solid var(--toggle-border);
+    border-radius:    7px;
+    cursor:           pointer;
+    color:            var(--toggle-fg);
+    transition:       border-color 0.4s ease, color 0.4s ease, transform 0.15s ease;
+}
+
+#theme-toggle:hover {
+    transform: scale(1.08);
+}
+
+.mode {
+    margin-top: 40px;
+    padding: 0 2rem;
+}
+
 nav {
     display:         flex;
-    padding:         1.5rem 4rem;
     align-items:     center;
     justify-content: space-between;
+    padding:         1rem 4rem;
+    z-index:         9999;
+    position:        sticky;
+    top:             0;
+    background-color: var(--bg);
+    transition:      background-color 0.4s ease;
 }
 
 nav ul {
     display: flex;
     gap:     30px;
+    margin: 0;
+    padding: 0;
 }
 
 nav ul li {
@@ -48,14 +178,23 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: var(--text-light);
-    font-size: 18px;
-    font-weight: 600;
-    transition: all 0.3s ease-out;
+    color:           var(--text);
+    font-size:       16px;
+    position:        relative;
+    font-weight:     500;
 }
 
-nav ul li a:hover {
-    color: #0300b9;
+nav ul li a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 3px;
+    background: var(--accent-nav);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
 }
 
 nav .logo {
@@ -65,27 +204,28 @@ nav .logo {
 }
 
 nav .logo span span {
-    color: #0300b9;
+    color: var(--accent-nav);
 }
 
 nav button {
     display:          flex;
     align-items:      center;
+    justify-content:  center;
     padding:          0.3rem 0.7rem;
     border:           2px solid transparent;
     border-radius:    7px;
-    background-color: #000;
+    background-color: var(--btn-primary-bg);
+    color:            var(--btn-primary-fg);
     font-size:        16px;
     font-weight:      600;
     cursor:           pointer;
-    transition:       all 0.4s ease-out;
-    color:            #fff;
+    transition:       background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
 nav button:hover {
-    background-color: #fff;
-    border:           2px solid #000;
-    color:            #000;
+    background-color: var(--btn-primary-hover-bg);
+    border-color:     var(--btn-primary-hover-border);
+    color:            var(--btn-primary-hover-fg);
 }
 
 nav button i {
@@ -101,7 +241,7 @@ nav button i {
     align-items:     center;
     justify-content: center;
     gap:             100px;
-    margin-top:      60px;
+    margin-top:      80px;
 }
 
 .container h1 {
@@ -135,37 +275,38 @@ nav button i {
     font-size:        25px;
     margin-right:     10px;
     cursor:           pointer;
-    transition:       all 0.5s ease-out;
-    background-color: #000;
-    color:            #fff;
+    transition:       background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+    background-color: var(--social-bg);
+    color:            var(--social-fg);
     padding:          0.5rem;
     border-radius:    50%;
     border:           2px solid transparent;
 }
 
 .social_media_icons i:hover {
-    background-color: #fff;
-    border:           2px solid #000;
-    color:            #000;
+    background-color: var(--social-hover-bg);
+    border-color:     var(--social-hover-border);
+    color:            var(--social-hover-fg);
 }
 
 .buttons {
     display: flex;
-    gap:     15px;
+    gap: 15px;
 }
 
+/* Botón primario reutilizable */
 .hire_me {
     padding:          0.3rem 0.7rem;
     font-size:        16px;
     border-radius:    7px;
     border:           2px solid transparent;
-    color:            #fff;
-    background-color: #000;
+    color:            var(--btn-primary-fg);
+    background-color: var(--btn-primary-bg);
     font-weight:      600;
     display:          flex;
     align-items:      center;
     cursor:           pointer;
-    transition:       all 0.4s ease-out;
+    transition:       background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
 .hire_me i {
@@ -174,29 +315,30 @@ nav button i {
 }
 
 .hire_me:hover {
-    background-color: #fff;
-    color:            #000;
-    border:           2px solid #000;
+    background-color: var(--btn-primary-hover-bg);
+    color:            var(--btn-primary-hover-fg);
+    border-color:     var(--btn-primary-hover-border);
 }
 
+/* Botón ghost */
 .github {
     padding:          0.3rem 0.7rem;
     font-size:        16px;
     border-radius:    7px;
-    border:           1px solid rgb(229, 229, 229);
-    color:            #000;
-    background-color: #fff;
+    border:           1px solid var(--btn-ghost-border);
+    color:            var(--btn-ghost-fg);
+    background-color: var(--btn-ghost-bg);
     font-weight:      600;
     display:          flex;
     align-items:      center;
     cursor:           pointer;
-    transition:       all 0.4s ease-out;
+    transition:       background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
 .github:hover {
-    background-color: #000;
-    color:            #fff;
-    border:           1px solid transparent;
+    background-color: var(--btn-ghost-hover-bg);
+    color:            var(--btn-ghost-hover-fg);
+    border-color:     transparent;
 }
 
 .github i {
@@ -208,9 +350,10 @@ nav button i {
    SECTION 2 — ARTICLES
    ============================================= */
 .container2 {
-    background-color: rgb(231, 231, 231);
-    margin-top:       150px;
-    padding:          2rem;
+    background-color: var(--bg-subtle);
+    margin-top:       80px;
+    padding:          3rem 2rem;
+    transition:       background-color 0.4s ease;
 }
 
 .articles {
@@ -220,25 +363,39 @@ nav button i {
 }
 
 .articles article {
-    background-color: #fff;
+    background-color: var(--bg-card);
+    color:            var(--text);
     width:            100%;
     max-width:        350px;
-    height:           100%;
-    max-height:       700px;
-    padding:          1rem;
+    height:          470px;
+    padding:          1.5rem;
     border-radius:    15px;
-    box-shadow:       rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow:       var(--card-shadow);
     border:           2px solid transparent;
-    transition:       all 0.4s ease-out;
+    transition:       background-color 0.4s ease,
+                      border-color 0.4s ease,
+                      box-shadow 0.4s ease,
+                      transform 0.2s ease;
 }
 
 .articles article:hover {
-    border: 2px solid #6f73e4;
+    border-color: var(--card-hover-border);
+    transform:    translateY(-4px);
 }
 
 .articles article img {
     width:  250px;
     height: 250px;
+}
+
+.articles article h3 {
+    color:      var(--text);
+    transition: color 0.4s ease;
+}
+
+.articles article p {
+    color:      var(--text-muted);
+    transition: color 0.4s ease;
 }
 
 .image_article {
@@ -257,15 +414,19 @@ nav button i {
 
 .header h4 {
     display:          inline-block;
-    background-color: var(--bg-light);
+    background-color: var(--tag-bg);
+    color:            var(--text);
     font-size:        25px;
     padding:          0.5rem 2rem;
     border-radius:    15px;
-    border:           1px solid #d0cfcf;
+    border:           1px solid var(--tag-border);
+    transition:       background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
 .header p {
     font-size: 18px;
+    color:     var(--text-muted);
+    transition: color 0.4s ease;
 }
 
 .header_h4 {
@@ -275,13 +436,14 @@ nav button i {
 }
 
 /* =============================================
-   SECTION 3 — DARK
+   SECTION 3 — DARK CARD
    ============================================= */
 .container3 {
-    margin:           100px 40px;
-    background-color: #242424;
+    margin:           80px 40px;
+    background-color: var(--bg-dark-section);
     border-radius:    15px;
     padding:          2rem;
+    transition:       background-color 0.4s ease;
 }
 
 .container3 .header3 h4 {
@@ -310,21 +472,22 @@ nav button i {
 
 .explore_btn button {
     padding:          0.3rem 0.7rem;
-    background-color: #fff;
+    background-color: #ffffff;
+    color:            #111111;
     border-radius:    7px;
     border:           2px solid transparent;
     font-size:        17px;
     display:          flex;
     align-items:      center;
     cursor:           pointer;
-    transition:       all 0.5s ease-out;
+    transition:       background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
     font-weight:      600;
 }
 
 .explore_btn button:hover {
     background-color: transparent;
-    border:           2px solid #fff;
-    color:            #fff;
+    border-color:     #ffffff;
+    color:            #ffffff;
 }
 
 .explore_btn button i {
@@ -347,6 +510,12 @@ nav button i {
     padding:          2rem 1rem;
     border:           1px solid #383838;
     border-radius:    15px;
+    transition:       border-color 0.3s ease, transform 0.2s ease;
+}
+
+.articles1 article:hover {
+    border-color: #555568;
+    transform:    translateY(-3px);
 }
 
 .articles1 article .icon i {
@@ -371,9 +540,14 @@ nav button i {
 /* =============================================
    CONTACT
    ============================================= */
+.contact {
+    margin: 80px;
+}
+
 .contact .header4 h1 {
     text-align:    center;
     margin-bottom: 50px;
+    color:         var(--text);
 }
 
 .contact_info {
@@ -384,36 +558,40 @@ nav button i {
 }
 
 .contact_info article {
-    border:        1px solid rgb(199, 199, 199);
+    border:        1px solid var(--border-subtle);
     padding:       0 2rem;
     border-radius: 15px;
     height:        170px;
+    background-color: var(--bg-card);
+    transition:    background-color 0.4s ease, border-color 0.4s ease;
 }
 
 .contact_info article h3 {
     font-size: 20px;
+    color:     var(--text);
 }
 
 .contact_info article p {
     font-size: 18px;
+    color:     var(--text-muted);
 }
 
 .contact_button button {
     padding:          0.4rem 0.9rem;
     border:           2px solid transparent;
     border-radius:    7px;
-    background-color: #000;
-    color:            #fff;
+    background-color: var(--btn-primary-bg);
+    color:            var(--btn-primary-fg);
     font-size:        17px;
     font-weight:      600;
     cursor:           pointer;
-    transition:       all 0.4s ease-out;
+    transition:       background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
 .contact_button button:hover {
-    background-color: #fff;
-    border:           2px solid #000;
-    color:            #000;
+    background-color: var(--btn-primary-hover-bg);
+    border-color:     var(--btn-primary-hover-border);
+    color:            var(--btn-primary-hover-fg);
 }
 
 /* =============================================
@@ -422,7 +600,7 @@ nav button i {
 footer {
     background-color: #242424;
     border-radius:    24px 24px 0 0;
-    margin-top:       100px;
+    margin-top:       20px;
     display:          flex;
     align-items:      center;
     justify-content:  center;
@@ -431,12 +609,12 @@ footer {
 
 footer a {
     color:      gray;
-    transition: all 0.5s ease-out;
+    transition: color 0.4s ease;
     cursor:     pointer;
 }
 
 footer a:hover {
-    color: #fff;
+    color: #ffffff;
 }
 
 footer p {
