@@ -17,18 +17,20 @@
             </div>
             <div class="links">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Projects</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
-            <button>
-                <i class="ri-github-fill"></i>My Projects
-            </button>
+            <div class="header_buttons">
+                <button>
+                    <i class="ri-github-fill"></i>My Projects
+                </button>
+            </div>
         </nav>
 
-        <section class="container">
+        <section class="container" id="home">
             <div class="content">
                 <h3>
                     FRONT-END DEVELOPER IN PROGRESS
@@ -60,57 +62,7 @@
             </div>
         </section>
 
-        <section class="container2">
-            <div class="header">
-                <div class="header_h4">
-                    <h4>About Web Development</h4>
-                </div>
-                <p>I create user-friendly, and beautiful websites and applications.</p>
-            </div>
-            <div class="articles">
-                <article>
-                    <div class="image_article">
-                        <img src="/desarrollo-de-frontend.png">
-                    </div>
-                    <div class="article_content">
-                    <h3>
-                        Front-End Development
-                    </h3>
-                    <p>
-                        Crafting visually appealing and responsive interfaces using HTML, CSS and JavaScript frrameworks like React and Vue.
-                    </p>
-                    </div>
-                </article>
-                <article>
-                    <div class="image_article">
-                        <img src="/backend.png">
-                    </div>
-                    <div class="article_content">
-                    <h3>
-                        Back-End Development
-                    </h3>
-                    <p>
-                        Building robust and scalable server-side applications with Node.js, Express, and databases like MongoDB and SQL.
-                    </p>
-                    </div>
-                </article>
-                <article>
-                    <div class="image_article">
-                        <img src="/desarrollador-full-stack.png">
-                    </div>
-                    <div class="article_content">
-                    <h3>
-                        Full-Stack Integration
-                    </h3>
-                    <p>
-                        Seamlessly integrating front-end and back-end technologies to deliver comprehensive web solutions.
-                    </p>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section class="container3">
+        <section class="container3" id="projects">
             <div class="header3">
                 <h4><i class="ri-code-fill"></i>Troubleshoot & Debug</h4>
                 <h1>Projects Showcase</h1>
@@ -169,7 +121,57 @@
             </div>
         </section>
 
-        <div class="contact">
+        <section class="container2" id="about">
+            <div class="header">
+                <div class="header_h4">
+                    <h4>About Web Development</h4>
+                </div>
+                <p>I create user-friendly, and beautiful websites and applications.</p>
+            </div>
+            <div class="articles">
+                <article>
+                    <div class="image_article">
+                        <img src="/desarrollo-de-frontend.png">
+                    </div>
+                    <div class="article_content">
+                    <h3>
+                        Front-End Development
+                    </h3>
+                    <p>
+                        Crafting visually appealing and responsive interfaces using HTML, CSS and JavaScript frrameworks like React and Vue.
+                    </p>
+                    </div>
+                </article>
+                <article>
+                    <div class="image_article">
+                        <img src="/backend.png">
+                    </div>
+                    <div class="article_content">
+                    <h3>
+                        Back-End Development
+                    </h3>
+                    <p>
+                        Building robust and scalable server-side applications with Node.js, Express, and databases like MongoDB and SQL.
+                    </p>
+                    </div>
+                </article>
+                <article>
+                    <div class="image_article">
+                        <img src="/desarrollador-full-stack.png">
+                    </div>
+                    <div class="article_content">
+                    <h3>
+                        Full-Stack Integration
+                    </h3>
+                    <p>
+                        Seamlessly integrating front-end and back-end technologies to deliver comprehensive web solutions.
+                    </p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <div class="contact" id="contact">
             <div class="header4">
                 <h1>Interested in Working Together?</h1>
             </div>
@@ -191,6 +193,10 @@
             </div>
         </div>
 
+        <div class="mode">
+            <button id="theme-toggle" aria-label="Cambiar Tema"></button>
+        </div>
+
         <footer>
             <div class="privacy">
                 <a>Privacy Policy</a>
@@ -202,6 +208,8 @@
                 <p>2026 SamDev</p>
             </div>
         </footer>
+
+        <script src="script.js"></script>
 
 </body>
 </html>
